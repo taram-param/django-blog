@@ -1,0 +1,49 @@
+{% extends 'blog/base.html' %}
+{% block blog %}
+<section class="mx-5">
+<div class="list-group mt-5 mb-5">
+    <a class="list-group-item list-group-item-action">
+        <div class="d-flex w-100 justify-content-between">
+            <h5 class="mb-1">{{ article.title }}</h5>
+            <small>{{ article.datetime|date:'j b, H:i' }}</small>
+        </div>
+        <p class="mb-1">{{ article.content }}</p>
+        <small></small>
+    </a>
+</div>
+<div class="comments-area mx-5">
+    <h4>Comments: {{ article.comment_set.count }}</h4>
+    <div class="mx-5">
+        {% for comment in article.get_comment %}
+        <div>
+            <h5>
+                {{ comment.author.username }}
+            </h5>
+            <p class="comment">
+                {{ comment.text }}
+            </p>
+            <p class="date">{{ comment.datetime|date:'j b, H:i' }} </p>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+    {% if user.is_authenticated %}
+<div>
+    <h4 class="ml-5">Leave comment</h4>
+    <form class="form-group mx-5" action="{% url 'add_comment' article.id %}" method="post" id="CommentForm">
+        {% csrf_token %}
+        <div>
+            <textarea class="form-control mb-3" name="text" id="id_text" cols="30" rows="9" placeholder="Write Comment"></textarea>
+        </div>
+        <div>
+            <button type="submit" class="btn btn-primary mt-2">Leave comment</button>
+        </div>
+    </form>
+</div>
+    {% else %}
+    <div>
+        <h4 class="ml-5">Only registered users can leave comments</h4>
+    </div>
+    {% endif %}
+    </section>
+{% endblock %}

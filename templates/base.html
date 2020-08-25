@@ -1,0 +1,18 @@
+<!Doctype html>
+{% load static %}
+<html class="no-js" lang="zxx">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>{% block title %}{% endblock title %} Блог</title>
+    <meta name="description" content="">
+    <link rel="stylesheet" href="{% static 'blog/css/bootstrap.css' %}">
+
+</head>
+<body>
+{% include 'include/header.html' %}
+{% block content %}
+{% endblock content %}
+</body>
+
+</html>

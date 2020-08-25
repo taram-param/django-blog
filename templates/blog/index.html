@@ -1,0 +1,25 @@
+{% extends 'blog/base.html' %}
+{% load static %}
+{% block blog %}
+
+    {% if user.is_authenticated %}
+    <h3> Hello, {{user.username}}</h3>
+    {% else %}
+    <h3>You are not logged in</h3>
+    {% endif %}
+<div class="list-group ml-20 mt-5">
+    {% for article in articles %}
+    <a href="{{ article.get_absolute_url }}" class="list-group-item list-group-item-action">
+        <div class="d-flex w-100 justify-content-between">
+            <h5 class="mb-1">{{ article.title }}</h5>
+            <small>{{ article.datetime|date:"j b, H:i" }}</small>
+        </div>
+        <p class="mb-1">{{ article.content|truncatechars:"50" }}</p>
+
+        <small></small>
+    </a>
+    {% endfor %}
+</div>
+
+
+{% endblock blog %}

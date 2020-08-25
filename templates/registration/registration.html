@@ -1,0 +1,25 @@
+{% extends 'blog/base.html' %}
+{% block blog %}
+<div class="mx-5">
+    <h3>Sign up</h3>
+
+    <form method="post" class="form-group mx-5">
+        {% csrf_token %}
+        <div class="my-3">
+            <label for="id_username">Username:</label>
+            <input type="text" name="username" maxlength="150" class="form-control" required id="id_username">
+        </div>
+        <div class="my-3">
+            <label for="id_password1">Password:</label>
+            <input type="password" name="password1" autocomplete="new-password" class="form-control" required
+                   id="id_password1">
+        </div>
+        <div class="my-3">
+            <label for="id_password2">Password confirmation:</label>
+            <input type="password" name="password2" autocomplete="new-password" class="form-control" required
+                   id="id_password2">
+        </div>
+        <button type="submit" class="btn btn-primary mt-2">Submit</button>
+    </form>
+</div>
+{% endblock blog %}

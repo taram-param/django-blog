@@ -1,4 +1,4 @@
-{% extends  'blog/base.html' %}
+{% extends 'blog/base.html' %}
 {% block blog %}
 <div class="mx-5">
     <h3>Log In</h3>
@@ -6,7 +6,7 @@
     <form method="post" class="form-group mx-5">
         {% csrf_token %}
         {{ form.as_p }}
-        <button type="submit" class="btn btn-primary mt-3">Log in</button>
+        <button type="submit" class="btn btn-primary mt-2">Log in</button>
     </form>
 </div>
 {% endblock blog %}

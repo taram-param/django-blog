@@ -6,9 +6,11 @@ from .models import Comment
 
 class RegistrationForm(UserCreationForm):
 
+    email = forms.EmailField(max_length=250, help_text="Enter valid email address")
+
     class Meta:
         model = User
-        fields = ["username", "password1", "password2"]
+        fields = ["username", "email", "password1", "password2"]
 
     def __init__(self, *args, **kwargs):
         super(RegistrationForm, self).__init__(*args, **kwargs)

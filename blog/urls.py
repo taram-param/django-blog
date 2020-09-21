@@ -9,5 +9,6 @@ urlpatterns = [
     path("authentication/", AuthenticationView.as_view(), name="authentication"),
     path("logout/", LogoutView.as_view(), name="log_out"),
     path("<slug:slug>/", ArticleDetailView.as_view(), name="article_detail"),
-    path("comment/<int:pk>/", CommentArticleView.as_view(), name="add_comment")
+    path("comment/<int:pk>/", CommentArticleView.as_view(), name="add_comment"),
+    path("activate/<uidb64>/<token>/<timestamp>/", ActivateAccount.as_view(), name="activate")
 ]

@@ -3,6 +3,7 @@ from django.db.models.signals import post_save
 from django.contrib.auth.models import User
 from django.urls import reverse
 from django.dispatch import receiver
+import datetime
 
 
 class Article(models.Model):
@@ -40,3 +41,8 @@ class Comment(models.Model):
         verbose_name = "Comment"
         verbose_name_plural = "Comments"
 
+
+class ControlModel(models.Model):
+    # model to control all global variables
+    name = models.CharField("variable name", max_length=255, default="duration")
+    link_duration = models.DurationField("activation time", default=datetime.timedelta(seconds=30), blank=True)
